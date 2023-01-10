@@ -15,16 +15,16 @@ $createAgeGroup = function () {
 
 class SelfIntroduction
 {
-    private $lastName;
-    private $firstName;
-    private $age;
-    private $hobby;
+    public string $lastName;
+    public string $firstName;
+    public int $age;
+    public string $hobby;
 
     public function __construct(
-        string $lastName,
-        string $firstName,
-        int $age,
-        string $hobby,
+        $lastName,
+        $firstName,
+        $age,
+        $hobby,
     ) {
         $this->lastName     = $lastName;
         $this->firstName    = $firstName;
@@ -48,11 +48,10 @@ class SelfIntroduction
     }
 }
 
-if (! empty($_POST)) {
-    $lastName         = $_POST['last_name'];
-    $firstName        = $_POST['first_name'];
-    $age              = $_POST['age'];
-    $hobby            = $_POST['hobby'];
+if (! empty($_POST['lastname']) && ! empty($_POST['firstname']) &&
+    ! empty($_POST['age']) && ! empty($_POST['hobby'])) {
+    $selfIntroduction = new SelfIntroduction($_POST['lastname'],$_POST['firstname'],$_POST['age'],$_POST['hobby']);
+
     if ($selfIntroduction) {
         echo '私の名前は'.$selfIntroduction->getFullName().'年齢は'.$selfIntroduction->getAge().'です。';
         echo '<br>';
@@ -70,9 +69,9 @@ if (! empty($_POST)) {
     <section>
     <form action='./debug02.php' method="post">
         <label>姓</label>
-        <input type="text" name="last_name"/>
+        <input type="text" name="lastname"/>
         <label>名</label>
-        <input type="text" name="first_name" />
+        <input type="text" name="firstname" />
         <label>趣味</label>
         <input type="text" name="hobby" />
         <select name="age">
