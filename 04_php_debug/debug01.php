@@ -19,7 +19,7 @@ if (isset($_POST['last_name']) && isset($_POST['first_name'])) {
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<title>デバック練習</title>
+<title>デバック練習です</title>
 </head>
 <body>
     <section>
